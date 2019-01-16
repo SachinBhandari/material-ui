@@ -22,6 +22,12 @@ const useStyles = makeStyles(theme => ({
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
   },
+  themedSelect: {
+    '& > option': {
+      background: theme.palette.background.paper,
+      borderColor: theme.palette.background.paper
+    }
+  }
 }));
 
 function NativeSelects() {
@@ -226,6 +232,25 @@ function NativeSelects() {
           <option value={20}>Twenty</option>
           <option value={30}>Thirty</option>
         </Select>
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="age-native-themed">Age</InputLabel>
+        <Select
+          native
+          value={state.age}
+          onChange={handleChange('age')}
+          inputProps={{
+            name: 'age',
+            id: 'age-native-themed',
+            className: classes.themedSelect,
+          }}
+        >
+          <option value="" />
+          <option value={10}>Ten</option>
+          <option value={20}>Twenty</option>
+          <option value={30}>Thirty</option>
+        </Select>
+        <FormHelperText>Theme correction native select</FormHelperText>
       </FormControl>
     </div>
   );
